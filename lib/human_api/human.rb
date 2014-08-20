@@ -14,17 +14,18 @@ module HumanApi
 
 		# The available methods for this api
 		AVAILABLE_METHODS = [
-							:profile, 
-							:activities, 
-							:blood_glucose, 
-							:blood_pressure, 
-							:body_fat, 
-							:genetic_traits, 
-							:heart_rate, 
-							:height, 
-							:locations, 
-							:sleeps, 
-							:weight, 
+              :sources,
+							:profile,
+							:activities,
+							:blood_glucose,
+							:blood_pressure,
+							:body_fat,
+							:genetic_traits,
+							:heart_rate,
+							:height,
+							:locations,
+							:sleeps,
+							:weight,
 							:bmi
 							]
 
@@ -34,7 +35,6 @@ module HumanApi
 		end
 
 		# Profile =====================================
-
 		def summary
 			get('', :access_token => token)
 		end
@@ -43,6 +43,9 @@ module HumanApi
 			query('profile')
 		end
 
+    def sources
+      query('sources')
+    end
 		# =============================================
 
 		def query(method, options = {})
@@ -72,7 +75,7 @@ module HumanApi
 					url += "/daily/#{options[:date]}"
 				# If you passed an id
 				elsif options[:id].present?
-					# Make a request for a single 
+					# Make a request for a single
 					url += "/#{options[:id]}"
 				end
 
